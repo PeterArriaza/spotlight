@@ -1,31 +1,10 @@
-import React, { useState, useEffect } from "react";
-import Homepage from "../components/homepage";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
-import { getTokenFromUrl } from "./api/spotify";
 
-export default function Home() {
-  const [token, setToken] = useState();
-
-  useEffect(() => {
-    const hash = getTokenFromUrl();
-    window.location.hash = "";
-    const _token = hash.access_token;
-
-    if (_token) {
-      setToken(_token);
-    }
-
-    console.log("token", token);
-  }, []);
-
-  return token ? (
-    <div>
-      <h1>Logged in</h1>
-    </div>
-  ) : (
+export default function Homepage() {
+  return (
     <div className={styles.container}>
       <Head>
         <title>Spotlight</title>
